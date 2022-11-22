@@ -1,4 +1,38 @@
 [
   
+  {
+    "title": "Test",
+    "url": "/posts/test/",
+    "categories": "",
+    "tags": "",
+    "date": "2022-11-22 13:00:00 +0100",
+    
+
+
+
+
+
+    
+    "snippet": "This is a plaintext code snippet.key: valuefor i in $(seq 1 653);do\techo \"$i\"done;",
+    "content": "This is a plaintext code snippet.key: valuefor i in $(seq 1 653);do\techo \"$i\"done;"
+  },
+  
+  {
+    "title": "Reddish - Writteup",
+    "url": "/posts/Reddish/",
+    "categories": "htb",
+    "tags": "Reddish, htb",
+    "date": "2022-11-22 13:00:00 +0100",
+    
+
+
+
+
+
+    
+    "snippet": "User(en la captura las ips salen mal separadas lo corrijo despues)Fuzzeando no conseguiríamos nadaSeguimos los pasos de hacktricks para intentar depositar contenido en la web mediante estoNos metem...",
+    "content": "User(en la captura las ips salen mal separadas lo corrijo despues)Fuzzeando no conseguiríamos nadaSeguimos los pasos de hacktricks para intentar depositar contenido en la web mediante estoNos metemos las anteriores instrucciones en un script por si nuestro archivo desaparecieseCon socat redirigimos lo que llegue al puerto 1111 de la maquina a nuestro puerto 2222 la idea aquí es lanzar una reverse shell contra esta maquinaen el puerto 1111 y que nos llegue a nosotros por el puerto 2222Importante urlencodear los ampersandY recibimos nuestra reverse shellVemos un nuevo segmento de red el cual no podemos enumerar ya que no podemos ejecutar pingpor lo que probablemente tengamos que convertirnos en rootAsí iria quedando nuestro esquema de redEnumerando y viendo el crontab vemos que ejecuta un scriptTambien podriamos haberlo enumerado con el siguiente script:El cual se nos ocurría una forma de abusar de el viendo el empleo de los *Mirando en GTFObins vemos esto:Mirando el man vemos que -e se emplea para indicarle una shell alternativa y ademas podemos jugar con estapara que nos ejecute un comandoRootEl puerto 873 es el empleado por rysnc asi que vamos a ver si podemos usarlo para conectarnos a la maquina que vimos en el scriptY así esPor lo que se nos ocurre viendo que está activo el servicio cron es subirnos un archivo con formato cronque nos entable una reverse shellNos creamos un cron que cada minuto el usuario root nos ejecute con sh /tmp/reverse.shCon socat nos motamos otra redirecciónPara podernos pasar el socat entre la ultima maquina y la nuestraAhora solo nos quedaría pasarle eso a la maquina y con rsync ponerlo en /tmp como reverse.sh para que mediante socat nos lleguePara ganar una shell interactiva podríamos hacer lo siguiente ya que esto tiene pinta de que es la monturadel sistema real(no se ve pero pone tarea)Así habría quedado el esquema final#Linux #htb [[HTB]] #Abusing_Node-Red #Chisel_Socat #Redis-CliExploitation #RsyncAbusing #CronExploitation #DiskMount #FileTransferTips #Pivoting #eCPPTv2 #eCPTXv2 #Insane"
+  }
+  
 ]
 
