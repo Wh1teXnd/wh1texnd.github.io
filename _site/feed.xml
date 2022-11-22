@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>WhiteXnd</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-11-22T16:11:39+01:00</updated>
+  <updated>2022-11-22T17:06:04+01:00</updated>
   <author>
     <name>WhiteXnd</name>
     <uri>http://localhost:4000/</uri>
@@ -56,137 +56,6 @@ done;
 
 
 
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>Reddish - Writteup</title>
-    <link href="http://localhost:4000/posts/Reddish/" rel="alternate" type="text/html" title="Reddish - Writteup" />
-    <published>2022-11-22T13:00:00+01:00</published>
-  
-    <updated>2022-11-22T16:09:46+01:00</updated>
-  
-    <id>http://localhost:4000/posts/Reddish/</id>
-    <content src="http://localhost:4000/posts/Reddish/" />
-    <author>
-      <name>WhiteXnd</name>
-    </author>
-
-  
-    
-    <category term="htb" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      
-
-User
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(en la captura las ips salen mal separadas lo corrijo despues)
-
-
-
-
-
-
-
-
-
-
-
-Fuzzeando no conseguiríamos nada
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Seguimos los pasos de hacktricks para intentar depositar contenido en la web mediante esto
-
-
-
-
-
-
-
-
-Nos metemos las anteriores instrucciones en un script por si nuestro archivo desapareciese
-
-
-
-Con socat redirigimos ...
     </summary>
   
 
