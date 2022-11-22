@@ -36,18 +36,7 @@ const resource = [
         '/assets/js/dist/misc.min.js',
         '/assets/js/dist/page.min.js',
         '/assets/js/dist/post.min.js',
-        '/assets/js/dist/pvreport.min.js',
-        '/assets/img/favicons/.jekyll-cache/.gitignore',
-        '/assets/img/favicons/.jekyll-cache/Jekyll/Cache/Jekyll--Cache/b7/9606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910',
-        '/assets/img/favicons/_site/android-chrome-192x192.png',
-        '/assets/img/favicons/_site/android-chrome-512x512.png',
-        '/assets/img/favicons/_site/apple-touch-icon.png',
-        '/assets/img/favicons/_site/browserconfig.xml',
-        '/assets/img/favicons/_site/favicon-16x16.png',
-        '/assets/img/favicons/_site/favicon-32x32.png',
-        '/assets/img/favicons/_site/favicon.ico',
-        '/assets/img/favicons/_site/mstile-150x150.png',
-        '/assets/img/favicons/_site/site.webmanifest'
+        '/assets/js/dist/pvreport.min.js'
 ];
 
 /* The request url with below domain will be cached */
