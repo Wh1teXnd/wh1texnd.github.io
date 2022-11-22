@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>WhiteXnd</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-11-22T16:09:18+01:00</updated>
+  <updated>2022-11-22T16:11:39+01:00</updated>
   <author>
     <name>WhiteXnd</name>
     <uri>http://localhost:4000/</uri>
@@ -67,7 +67,7 @@ done;
     <link href="http://localhost:4000/posts/Reddish/" rel="alternate" type="text/html" title="Reddish - Writteup" />
     <published>2022-11-22T13:00:00+01:00</published>
   
-    <updated>2022-11-22T13:00:00+01:00</updated>
+    <updated>2022-11-22T16:09:46+01:00</updated>
   
     <id>http://localhost:4000/posts/Reddish/</id>
     <content src="http://localhost:4000/posts/Reddish/" />
