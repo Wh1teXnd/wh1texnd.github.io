@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>WhiteXnd</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-11-22T20:24:58+01:00</updated>
+  <updated>2022-11-24T12:55:23+01:00</updated>
   <author>
     <name>WhiteXnd</name>
     <uri>http://localhost:4000/</uri>
@@ -20,61 +20,14 @@
 
   
   <entry>
-    <title>Test</title>
-    <link href="http://localhost:4000/posts/test/" rel="alternate" type="text/html" title="Test" />
-    <published>2022-11-22T13:00:00+01:00</published>
+    <title>EvilShell</title>
+    <link href="http://localhost:4000/posts/EvilShell/" rel="alternate" type="text/html" title="EvilShell" />
+    <published>2022-11-23T12:48:00+01:00</published>
   
-    <updated>2022-11-22T13:00:00+01:00</updated>
+    <updated>2022-11-23T12:48:00+01:00</updated>
   
-    <id>http://localhost:4000/posts/test/</id>
-    <content src="http://localhost:4000/posts/test/" />
-    <author>
-      <name>WhiteXnd</name>
-    </author>
-
-  
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      This is a plaintext code snippet.
-
-
-key: value
-
-
-for i in $(seq 1 653);do
-	echo "$i"
-done;
-
-
-a
-
-
-
-
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>Reddish</title>
-    <link href="http://localhost:4000/posts/Reddish/" rel="alternate" type="text/html" title="Reddish" />
-    <published>2022-11-22T13:00:00+01:00</published>
-  
-    <updated>2022-11-22T16:36:36+01:00</updated>
-  
-    <id>http://localhost:4000/posts/Reddish/</id>
-    <content src="http://localhost:4000/posts/Reddish/" />
+    <id>http://localhost:4000/posts/EvilShell/</id>
+    <content src="http://localhost:4000/posts/EvilShell/" />
     <author>
       <name>WhiteXnd</name>
     </author>
@@ -92,7 +45,37 @@ a
 
 
       
+  EvilShell es un script que facilita la creación de Reverse Shells
+Ofreciendo varios lenguajes
 
+
+
+
+Instalacion
+
+git clone https://github.com/whitexnd/EvilShell
+
+Opcional
+
+Recomiendo añadirlo a tu $PATH ejecutando los siguientes comandos:
+
+  
+    chmod +x evilshell.sh
+  
+  
+    sudo mv evilshell.sh /bin/evilshell
+  
+
+
+Para poder usarlo así:
+
+  evilshell -i &amp;lt;ip&amp;gt; -p &amp;lt;port&amp;gt;
+
+
+Ayuda
+
+
+...
     </summary>
   
 

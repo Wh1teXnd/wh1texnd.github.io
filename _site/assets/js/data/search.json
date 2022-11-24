@@ -1,11 +1,11 @@
 [
   
   {
-    "title": "Test",
-    "url": "/posts/test/",
+    "title": "EvilShell",
+    "url": "/posts/EvilShell/",
     "categories": "",
-    "tags": "",
-    "date": "2022-11-22 13:00:00 +0100",
+    "tags": "scripts",
+    "date": "2022-11-23 12:48:00 +0100",
     
 
 
@@ -13,25 +13,8 @@
 
 
     
-    "snippet": "This is a plaintext code snippet.key: valuefor i in $(seq 1 653);do\techo \"$i\"done;a",
-    "content": "This is a plaintext code snippet.key: valuefor i in $(seq 1 653);do\techo \"$i\"done;a"
-  },
-  
-  {
-    "title": "Reddish",
-    "url": "/posts/Reddish/",
-    "categories": "",
-    "tags": "",
-    "date": "2022-11-22 13:00:00 +0100",
-    
-
-
-
-
-
-    
-    "snippet": "",
-    "content": ""
+    "snippet": "  EvilShell es un script que facilita la creación de Reverse ShellsOfreciendo varios lenguajesInstalaciongit clone https://github.com/whitexnd/EvilShellOpcionalRecomiendo añadirlo a tu $PATH ejecut...",
+    "content": "  EvilShell es un script que facilita la creación de Reverse ShellsOfreciendo varios lenguajesInstalaciongit clone https://github.com/whitexnd/EvilShellOpcionalRecomiendo añadirlo a tu $PATH ejecutando los siguientes comandos:      chmod +x evilshell.sh        sudo mv evilshell.sh /bin/evilshell  Para poder usarlo así:  evilshell -i &lt;ip&gt; -p &lt;port&gt;Ayuda  Puedes ayudarme dando estrella a mi repositorio de githubhttps://github.com/whitexnd/EvilShell"
   }
   
 ]
