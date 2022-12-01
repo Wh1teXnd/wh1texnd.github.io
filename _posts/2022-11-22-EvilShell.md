@@ -6,28 +6,35 @@ tags:  scripts    # TAG names should always be lowercase
 img_path: /images
 ---
 
->EvilShell es un script que facilita la creación de Reverse Shells
->Ofreciendo varios lenguajes
+# EvilShell
 
-![image](https://user-images.githubusercontent.com/103772333/203641445-20a1003f-c497-46f9-95b6-72c1f8b4521e.png)
+>EvilShell its a bash script that simplifies the creation of reverse shells
 
-## Instalacion
+![image](https://user-images.githubusercontent.com/103772333/205136655-51710b32-be2a-452b-a05d-13bad06f146a.png)
+
+## Instalation
 
 
 `git clone https://github.com/whitexnd/EvilShell`
 
-## Opcional
+## Usage
 
-Recomiendo añadirlo a tu $PATH ejecutando los siguientes comandos:
+> By default takes the ip from the iface tun0 and the port 443
+
+`You can specify the ip with -i and the port with -p
+also you can select the shell with -s parameter`
+
+> If u want to encode the payload u can use
+
+`-e <encoder>`
+Current encoders are b64 (base64) and url
+
+## Optional
+
+I suggest you to add it into your $PATH with the following commands:
 - `chmod +x evilshell.sh`
 
 - `sudo mv evilshell.sh /bin/evilshell`
 
-Para poder usarlo así:
-- `evilshell -i <ip> -p <port>`
-
-## Ayuda
-
->Puedes ayudarme dando estrella a mi repositorio de github
-
-[https://github.com/whitexnd/EvilShell](https://github.com/whitexnd/EvilShell)
+Then u can use it like this:
+- `evilshell -s python`
