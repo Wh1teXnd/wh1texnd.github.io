@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2022-11-22-EvilShell.md",
+                "file": "_posts/2022-11-22-Monitors.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2022-11-22-EvilShell.md",
+                "file": "_posts/2022-11-22-Monitors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2022-11-22-EvilShell.md",
+                "file": "_posts/2022-11-22-Monitors.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2022-11-22-EvilShell.md"
+                "file": "_posts/2022-11-22-Monitors.md"
               }
             }
           }
@@ -136,6 +136,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "a662103a602edf2f",
-  "lastOpenFiles": []
+  "active": "8cc1d70340967a3b",
+  "lastOpenFiles": [
+    "_site/Pasted image 20221204180330.png",
+    "_posts/2022-11-22-Monitors.md",
+    "_posts/2022-11-22-EvilShell.md"
+  ]
 }

@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>WhiteXnd</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-12-04T17:15:22+01:00</updated>
+  <updated>2022-12-04T19:02:18+01:00</updated>
   <author>
     <name>WhiteXnd</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,53 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Monitors</title>
+    <link href="http://localhost:4000/posts/Monitors/" rel="alternate" type="text/html" title="Monitors" />
+    <published>2022-11-23T17:59:28+01:00</published>
+  
+    <updated>2022-11-23T17:59:28+01:00</updated>
+  
+    <id>http://localhost:4000/posts/Monitors/</id>
+    <content src="http://localhost:4000/posts/Monitors/" />
+    <author>
+      <name>WhiteXnd</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      
+
+Hoy vamos a realizar un writeup de maquina linux retirada Monitors alojada en la plataforma de Hack The Box,  por aqui os dejo mi perfil por si quereis darme respect jejejej
+
+
+  https://www.hackthebox.com/home/users/profile/1019735
+
+
+User
+
+Hacemos un escaneo inicial para ver los puertos abiertos
+
+	sudo nmap -sS --min-rate 5000 -p- -open -n -Pn 10.10.10.238
+
+
+Acto seguido usamos los scripts qu...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>

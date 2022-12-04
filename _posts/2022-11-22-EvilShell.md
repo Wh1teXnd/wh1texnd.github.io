@@ -2,7 +2,7 @@
 title: EvilShell
 date: 2022-11-23 12:48:00 +/-TTTT
 categories: 
-tags:  scripts    # TAG names should always be lowercase
+tags:  Scripts    # TAG names should always be lowercase
 img_path: /images
 ---
 
