@@ -13,8 +13,8 @@
 
 
     
-    "snippet": "  EvilShell es un script que facilita la creación de Reverse ShellsOfreciendo varios lenguajesInstalaciongit clone https://github.com/whitexnd/EvilShellOpcionalRecomiendo añadirlo a tu $PATH ejecut...",
-    "content": "  EvilShell es un script que facilita la creación de Reverse ShellsOfreciendo varios lenguajesInstalaciongit clone https://github.com/whitexnd/EvilShellOpcionalRecomiendo añadirlo a tu $PATH ejecutando los siguientes comandos:      chmod +x evilshell.sh        sudo mv evilshell.sh /bin/evilshell  Para poder usarlo así:  evilshell -i &lt;ip&gt; -p &lt;port&gt;Ayuda  Puedes ayudarme dando estrella a mi repositorio de githubhttps://github.com/whitexnd/EvilShell"
+    "snippet": "EvilShell  EvilShell its a bash script that simplifies the creation of reverse shellsInstalationgit clone https://github.com/whitexnd/EvilShellUsage  By default takes the ip from the iface tun0 and...",
+    "content": "EvilShell  EvilShell its a bash script that simplifies the creation of reverse shellsInstalationgit clone https://github.com/whitexnd/EvilShellUsage  By default takes the ip from the iface tun0 and the port 443You can specify the ip with -i and the port with -palso you can select the shell with -s parameter  If u want to encode the payload u can use-e &lt;encoder&gt;Current encoders are b64 (base64) and urlOptionalI suggest you to add it into your $PATH with the following commands:      chmod +x evilshell.sh        sudo mv evilshell.sh /bin/evilshell  Then u can use it like this:  evilshell -s python"
   }
   
 ]

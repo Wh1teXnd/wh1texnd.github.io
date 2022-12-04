@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> `Bienvenidos a mi blog personal soy WhiteXnd, actualmente estoy estudiando programación y ciberseguridad, esta ultima por mi cuenta, en este blog principalmente voy a subir mis apuntes y cosas relevantes, normalmente en español.`
+> `Bienvenidos a mi blog personal soy Oscar aka WhiteXnd, actualmente estoy estudiando programación DAW y ciberseguridad, esta ultima por mi cuenta, en este blog principalmente voy a subir mis apuntes y cosas relevantes, normalmente en español.`
 
 ![bike](https://user-images.githubusercontent.com/103772333/203426530-33d5d015-b7d2-4b24-947a-5612a768fd8d.gif#center)
 

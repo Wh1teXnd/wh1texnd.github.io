@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>WhiteXnd</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-11-24T13:13:02+01:00</updated>
+  <updated>2022-12-04T17:15:22+01:00</updated>
   <author>
     <name>WhiteXnd</name>
     <uri>http://localhost:4000/</uri>
@@ -24,7 +24,7 @@
     <link href="http://localhost:4000/posts/EvilShell/" rel="alternate" type="text/html" title="EvilShell" />
     <published>2022-11-23T12:48:00+01:00</published>
   
-    <updated>2022-11-23T12:48:00+01:00</updated>
+    <updated>2022-12-01T20:36:45+01:00</updated>
   
     <id>http://localhost:4000/posts/EvilShell/</id>
     <content src="http://localhost:4000/posts/EvilShell/" />
@@ -44,38 +44,33 @@
 
 
 
-      
-  EvilShell es un script que facilita la creación de Reverse Shells
-Ofreciendo varios lenguajes
+      EvilShell
+
+
+  EvilShell its a bash script that simplifies the creation of reverse shells
 
 
 
 
-Instalacion
+Instalation
 
 git clone https://github.com/whitexnd/EvilShell
 
-Opcional
-
-Recomiendo añadirlo a tu $PATH ejecutando los siguientes comandos:
-
-  
-    chmod +x evilshell.sh
-  
-  
-    sudo mv evilshell.sh /bin/evilshell
-  
+Usage
 
 
-Para poder usarlo así:
-
-  evilshell -i &amp;lt;ip&amp;gt; -p &amp;lt;port&amp;gt;
+  By default takes the ip from the iface tun0 and the port 443
 
 
-Ayuda
+You can specify the ip with -i and the port with -p
+also you can select the shell with -s parameter
 
 
-...
+  If u want to encode the payload u can use
+
+
+-e &amp;lt;encoder&amp;gt;
+Cu...
     </summary>
   
 
