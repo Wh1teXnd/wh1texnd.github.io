@@ -1,4 +1,4 @@
-I"oJ<p><img src="Pasted%20image%2020221204180442.png" alt="" /></p>
+I"NL<p><img src="Pasted%20image%2020221204180442.png" alt="" /></p>
 
 <p>Hoy vamos a realizar un writeup de maquina linux retirada <code class="language-plaintext highlighter-rouge">Monitors</code> alojada en la plataforma de <code class="language-plaintext highlighter-rouge">Hack The Box</code>,  por aqui os dejo mi perfil por si quereis darme respect jejejej</p>
 
@@ -10,22 +10,22 @@
 
 <p>Hacemos un escaneo inicial para ver los puertos abiertos</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>	<span class="nb">sudo </span>nmap <span class="nt">-sS</span> <span class="nt">--min-rate</span> 5000 <span class="nt">-p-</span> <span class="nt">-open</span> <span class="nt">-n</span> <span class="nt">-Pn</span> 10.10.10.238
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>	<span class="nb">sudo </span>nmap <span class="nt">-sS</span> <span class="nt">--min-rate</span> 5000 <span class="nt">-p-</span> <span class="nt">-open</span> <span class="nt">-n</span> <span class="nt">-Pn</span> 10.10.10.238
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Acto seguido usamos los scripts que nos aporta la utilidad nmap para hacer un reconocimiendo de los mismos</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>	<span class="nb">sudo </span>nmap <span class="nt">-sCV</span> <span class="nt">-p22</span>,80 <span class="nt">-n</span> <span class="nt">-Pn</span> 10.10.10.238 <span class="nt">-oN</span> targeted
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>	<span class="nb">sudo </span>nmap <span class="nt">-sCV</span> <span class="nt">-p22</span>,80 <span class="nt">-n</span> <span class="nt">-Pn</span> 10.10.10.238 <span class="nt">-oN</span> targeted
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="Pasted%20image%2020221204180731.png" alt="" /></p>
 
 <p>Entramos a la web que se ejecuta en el puerto 80, vemos que nos dice lo siguiente aprovechandonos del correo vemos el dominio <code class="language-plaintext highlighter-rouge">"monitors.htb"</code> este mismo deberemos añadirlo al fichero <code class="language-plaintext highlighter-rouge">/etc/hosts</code> para que al ponerlo nos resuelva hacia la maquina y ver si se aplica virtual hosting</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>10.10.10.238 monitors.htb
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>10.10.10.238 monitors.htb
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p><img src="Pasted%20image%2020221204180735.png" alt="" /></p>
@@ -118,8 +118,8 @@ Por lo que se nos ocurririía enumerar plugins en busca de alguno vulnerable.</p
 <img src="Pasted%20image%2020221204181419.png" alt="" /></p>
 
 <p>Ahora mediante SSH realizamos un Local Port Forwarding para que nuestro puerto local sea el mismo que el de la victima y podamos verlo</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-</pre></td><td class="rouge-code"><pre>ssh marcus@10.10.10.238 <span class="nt">-L</span> 8443:127.0.0.1:8443
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td> --><td class="rouge-code"><pre>ssh marcus@10.10.10.238 <span class="nt">-L</span> 8443:127.0.0.1:8443
 </pre></td></tr></tbody></table></code></pre></div></div>
 
 <p>Y navegando vemos que tenemos acceso
@@ -127,12 +127,12 @@ Por lo que se nos ocurririía enumerar plugins en busca de alguno vulnerable.</p
 
 <p>Hacemos uso de wfuzz para encontrar direcctorios</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
 5
-</pre></td><td class="rouge-code"><pre>wfuuz
+</pre></td> --><td class="rouge-code"><pre>wfuuz
 	<span class="nt">-c</span> -&gt; Formato colorizado
 	<span class="nt">-t</span> -&gt; Cantidad de hilos
 	<span class="nt">--hc</span><span class="o">=</span>404 -&gt; Para que nos oculte las peticiones que devuelvan el estado 404
@@ -198,7 +198,7 @@ Por lo que se nos ocurririía enumerar plugins en busca de alguno vulnerable.</p
 <p>En este caso tenemos que crearnos el siguiente archivo con nuestra ip y puerto para intentar cargar un modulo kernel que nos entable una reverse shell
 <img src="Pasted%20image%2020221204185028.png" alt="" /></p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -222,7 +222,7 @@ Por lo que se nos ocurririía enumerar plugins en busca de alguno vulnerable.</p
 22
 23
 24
-</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;linux/kmod.h&gt;</span><span class="cp">
+</pre></td> --><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;linux/kmod.h&gt;</span><span class="cp">
 #include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp">
 </span>
 <span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">"GPL"</span><span class="p">);</span>
@@ -251,13 +251,13 @@ Por lo que se nos ocurririía enumerar plugins en busca de alguno vulnerable.</p
 <p>Y tambien un makefile con las siguientes instrucciones:
 <img src="Pasted%20image%2020221204185056.png" alt="" /></p>
 
-<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><!-- <td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
 5
 6
-</pre></td><td class="rouge-code"><pre><span class="n">obj</span><span class="o">-</span><span class="n">m</span> <span class="o">+=</span><span class="n">reverse</span><span class="o">-</span><span class="n">shell</span><span class="p">.</span><span class="nf">o</span>
+</pre></td> --><td class="rouge-code"><pre><span class="n">obj</span><span class="o">-</span><span class="n">m</span> <span class="o">+=</span><span class="n">reverse</span><span class="o">-</span><span class="n">shell</span><span class="p">.</span><span class="nf">o</span>
 
 <span class="ss">all:
 	</span><span class="n">make</span> <span class="o">-</span><span class="no">C</span> <span class="sr">/lib/mo</span><span class="n">dules</span><span class="o">/</span><span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">uname</span> <span class="o">-</span><span class="n">r</span><span class="p">)</span><span class="o">/</span><span class="n">build</span> <span class="no">M</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="no">PWD</span><span class="p">)</span> <span class="n">modules</span>
@@ -284,5 +284,23 @@ Por lo que se nos ocurririía enumerar plugins en busca de alguno vulnerable.</p
 
 <p>Y ya podemos listar la flag</p>
 
-<p><img src="Pasted%20image%2020221204185208.png" alt="" /></p>
+<p>«««&lt; HEAD
+<img src="Pasted%20image%2020221204185208.png" alt="" />
+=======
+<img src="Pasted%20image%2020221204185208.png" alt="" /></p>
+<blockquote>
+  <blockquote>
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <p>fc516fd7b8d8b3ccdeedc9ad2860e821192a35c9</p>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
 :ET
