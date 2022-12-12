@@ -1,8 +1,10 @@
 ---
 title: EvilShell
 date: 2022-11-23 12:48:00 +/-TTTT
-categories: 
-tags:  Scripts    # TAG names should always be lowercase
+categories: [Personal Scripts]
+tags:  [Scripts]    # TAG names should always be lowercase
+toc: false
+excerpt: "Script en bash que automatiza las reverse shells"
 img_path: /images
 ---
 
