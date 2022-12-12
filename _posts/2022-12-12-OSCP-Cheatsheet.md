@@ -530,9 +530,9 @@ nmap -p139,445 --script "smb-vuln-* and not(smb-vuln-regsvc-dos)" --script-args 
 
 If :
 
-- MS17-010 - [EternalBlue](#EternalBlue (MS17-010))
-- MS08-067 - [MS08-067](#MS08-067)
-- CVE-2017-7494 - [CVE-2017-7494](#CVE-2017-7494)
+- MS17-010 - [EternalBlue](#)
+- MS08-067 - [MS08-067](#)
+- CVE-2017-7494 - [CVE-2017-7494](#)
 
 #### Manual testing
 
