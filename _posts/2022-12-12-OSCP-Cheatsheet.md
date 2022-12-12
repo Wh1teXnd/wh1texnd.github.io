@@ -1,6 +1,6 @@
 ---
 image:
-  path: ../../images/oscp.png
+  path: ../../assets/img/OSCP.png
   width: 800
   height: 500
 title: OSCP Cheatsheet
