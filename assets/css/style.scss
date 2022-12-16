@@ -36,3 +36,23 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 	background-color: rgb(114, 51, 34)!important;
 	border-color: rgb(154, 69, 46)!important;
 }
+
+#post-title{
+	color: #c12824;
+}
+
+.post-content h2{
+	color: #c12824;
+}
+
+.post-content h3{	
+	color: #C92A26;
+}
+
+.post-content h4{	
+	color: #b19945;
+}
+
+.post-content h5{	
+	color: #3087a9;
+}

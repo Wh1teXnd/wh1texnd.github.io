@@ -11,8 +11,12 @@
             "id": "8cc1d70340967a3b",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "_posts/2022-12-12-OSCP-Cheatsheet.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -44,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "squa",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "_posts/2022-12-12-OSCP-Cheatsheet.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "_posts/2022-12-12-OSCP-Cheatsheet.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "_posts/2022-12-12-OSCP-Cheatsheet.md"
+              }
             }
           }
         ]
@@ -130,9 +138,10 @@
   },
   "active": "8cc1d70340967a3b",
   "lastOpenFiles": [
+    "_posts/2022-12-12-OSCP-Cheatsheet.md",
+    "_posts/2022-11-22-EvilShell.md",
     "_posts/2022-12-04-Monitors.md",
     "_site/Pasted image 20221204180330.png",
-    "_posts/2022-11-22-Monitors.md",
-    "_posts/2022-11-22-EvilShell.md"
+    "_posts/2022-11-22-Monitors.md"
   ]
 }

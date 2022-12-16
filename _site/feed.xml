@@ -3,8 +3,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://localhost:4000/</id>
   <title>WhiteXnd</title>
-  <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-12-11T01:29:20+01:00</updated>
+  <subtitle>Blog personal sobre pentesting.</subtitle>
+  <updated>2022-12-15T19:09:10+01:00</updated>
   <author>
     <name>WhiteXnd</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,63 @@
 
   
   <entry>
+    <title>OSCP Cheatsheet</title>
+    <link href="http://localhost:4000/posts/OSCP-Cheatsheet/" rel="alternate" type="text/html" title="OSCP Cheatsheet" />
+    <published>2022-12-12T00:00:00+01:00</published>
+  
+    <updated>2022-12-12T00:00:00+01:00</updated>
+  
+    <id>http://localhost:4000/posts/OSCP-Cheatsheet/</id>
+    <content src="http://localhost:4000/posts/OSCP-Cheatsheet/" />
+    <author>
+      <name>WhiteXnd</name>
+    </author>
+
+  
+    
+    <category term="OSCP" />
+    
+    <category term="cheatsheet" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Bienvenidos a mi Cheatsheet personal para la certificación de la OSCP
+
+Protocolos
+FTP -&amp;gt; 21
+FTP (File Transfer Protocol) es un protocolo comunmente utilizado para la transferencia de archivos utiliza el puerto 21 para comando y control y el 20 para el transporte de datos
+
+Descargar archivo
+
+ftp &amp;lt;IP&amp;gt;
+PASSIVE             // (OPCIONAL)
+BINARY
+get &amp;lt;FILE&amp;gt;
+
+
+Subir un archivo
+
+ftp &amp;lt;I...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
     <title>Monitors</title>
     <link href="http://localhost:4000/posts/Monitors/" rel="alternate" type="text/html" title="Monitors" />
     <published>2022-12-04T17:59:28+01:00</published>
   
-    <updated>2022-12-10T23:07:02+01:00</updated>
+    <updated>2022-12-12T20:39:06+01:00</updated>
   
     <id>http://localhost:4000/posts/Monitors/</id>
     <content src="http://localhost:4000/posts/Monitors/" />
@@ -33,6 +85,10 @@
     </author>
 
   
+    
+    <category term="Writeups" />
+    
+    <category term="Hack The Box" />
     
   
 
@@ -76,7 +132,7 @@ User
     <link href="http://localhost:4000/posts/EvilShell/" rel="alternate" type="text/html" title="EvilShell" />
     <published>2022-11-23T12:48:00+01:00</published>
   
-    <updated>2022-12-04T19:26:43+01:00</updated>
+    <updated>2022-12-12T20:39:06+01:00</updated>
   
     <id>http://localhost:4000/posts/EvilShell/</id>
     <content src="http://localhost:4000/posts/EvilShell/" />
@@ -85,6 +141,8 @@ User
     </author>
 
   
+    
+    <category term="Personal Scripts" />
     
   
 
@@ -96,9 +154,7 @@ User
 
 
 
-      EvilShell
-
-
+      
   EvilShell its a bash script that simplifies the creation of reverse shells
 
 
@@ -110,19 +166,15 @@ git clone https://github.com/whitexnd/EvilShell
 
 Usage
 
-
-  By default takes the ip from the iface tun0 and the port 443
-
+By default takes the ip from the iface tun0 and the port 443
 
 You can specify the ip with -i and the port with -p
 also you can select the shell with -s parameter
 
-
-  If u want to encode the payload u can use
-
+If you want to encode the payload you can use:
 
 -e &amp;lt;encoder&amp;gt;
-Cu...
+Current encoders...
     </summary>
   
 

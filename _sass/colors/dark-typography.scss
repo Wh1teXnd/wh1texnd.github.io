@@ -8,6 +8,7 @@
   --mask-bg: rgb(68, 69, 70);
   --main-bg: rgb(27, 27, 30);
   --main-border-color: rgb(145, 45, 45, 0.8);
+  --second-border-color: rgb(106 46 46 / 48%);
 
   /* Common color */
   --text-color: rgb(185, 176, 177);
@@ -101,7 +102,7 @@
   }
 
   hr {
-    border-color: var(--main-border-color);
+    border-color: var(--second-border-color);
   }
 
   /* posts' toc, override BS */

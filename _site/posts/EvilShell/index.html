@@ -11,6 +11,8 @@
 <!-- `site.alt_lang` can specify a language different from the UI -->
 <html lang="es"
   
+    data-mode="dark"
+  
 >
 
   <!--
@@ -38,8 +40,8 @@
 <meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="EvilShell" />
 <meta property="og:locale" content="es" />
-<meta name="description" content="EvilShell" />
-<meta property="og:description" content="EvilShell" />
+<meta name="description" content="Script en bash que automatiza las reverse shells" />
+<meta property="og:description" content="Script en bash que automatiza las reverse shells" />
 <link rel="canonical" href="http://localhost:4000/posts/EvilShell/" />
 <meta property="og:url" content="http://localhost:4000/posts/EvilShell/" />
 <meta property="og:site_name" content="WhiteXnd" />
@@ -49,7 +51,7 @@
 <meta property="twitter:title" content="EvilShell" />
 <meta name="twitter:site" content="@" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-12-04T19:26:43+01:00","datePublished":"2022-11-23T12:48:00+01:00","description":"EvilShell","headline":"EvilShell","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/EvilShell/"},"url":"http://localhost:4000/posts/EvilShell/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-12-12T20:39:06+01:00","datePublished":"2022-11-23T12:48:00+01:00","description":"Script en bash que automatiza las reverse shells","headline":"EvilShell","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/EvilShell/"},"url":"http://localhost:4000/posts/EvilShell/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -108,8 +110,6 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css">
-  
 
   
     <!-- Manific Popup -->
@@ -119,137 +119,6 @@
   <!-- JavaScript -->
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-
-  
-    <!--
-  Switch the mode between dark and light.
--->
-
-<script type="text/javascript">
-  class ModeToggle {
-    static get MODE_KEY() { return "mode"; }
-    static get MODE_ATTR() { return "data-mode"; }
-    static get DARK_MODE() { return "dark"; }
-    static get LIGHT_MODE() { return "light"; }
-    static get ID() { return "mode-toggle"; }
-
-    constructor() {
-      if (this.hasMode) {
-        if (this.isDarkMode) {
-          if (!this.isSysDarkPrefer) {
-            this.setDark();
-          }
-        } else {
-          if (this.isSysDarkPrefer) {
-            this.setLight();
-          }
-        }
-      }
-
-      let self = this;
-
-      /* always follow the system prefers */
-      this.sysDarkPrefers.addEventListener("change", () => {
-        if (self.hasMode) {
-          if (self.isDarkMode) {
-            if (!self.isSysDarkPrefer) {
-              self.setDark();
-            }
-
-          } else {
-            if (self.isSysDarkPrefer) {
-              self.setLight();
-            }
-          }
-
-          self.clearMode();
-        }
-
-        self.notify();
-
-      });
-
-    } /* constructor() */
-
-    get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); }
-
-    get isSysDarkPrefer() { return this.sysDarkPrefers.matches; }
-
-    get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; }
-
-    get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; }
-
-    get hasMode() { return this.mode != null; }
-
-    get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); }
-
-    /* get the current mode on screen */
-    get modeStatus() {
-      if (this.isDarkMode
-        || (!this.hasMode && this.isSysDarkPrefer)) {
-        return ModeToggle.DARK_MODE;
-      } else {
-        return ModeToggle.LIGHT_MODE;
-      }
-    }
-
-    setDark() {
-      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE);
-    }
-
-    setLight() {
-      $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE);
-      sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE);
-    }
-
-    clearMode() {
-      $('html').removeAttr(ModeToggle.MODE_ATTR);
-      sessionStorage.removeItem(ModeToggle.MODE_KEY);
-    }
-
-    /* Notify another plugins that the theme mode has changed */
-    notify() {
-      window.postMessage({
-        direction: ModeToggle.ID,
-        message: this.modeStatus
-      }, "*");
-    }
-
-  } /* ModeToggle */
-
-  const toggle = new ModeToggle();
-
-  function flipMode() {
-    if (toggle.hasMode) {
-      if (toggle.isSysDarkPrefer) {
-        if (toggle.isLightMode) {
-          toggle.clearMode();
-        } else {
-          toggle.setLight();
-        }
-
-      } else {
-        if (toggle.isDarkMode) {
-          toggle.clearMode();
-        } else {
-          toggle.setDark();
-        }
-      }
-
-    } else {
-      if (toggle.isSysDarkPrefer) {
-        toggle.setLight();
-      } else {
-        toggle.setDark();
-      }
-    }
-
-    toggle.notify();
-
-  } /* flipMode() */
-
-</script>
 
   
 </head>
@@ -332,14 +201,6 @@
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center">
 
     
-      <button class="mode-toggle btn" aria-label="Switch Mode">
-        <i class="fas fa-adjust"></i>
-      </button>
-
-      
-        <span class="icon-border"></span>
-      
-    
 
     
       
@@ -355,9 +216,9 @@
       
 
       
-      <a href="https://twitter.com/" aria-label="twitter"
+      <a href="https://app.hackthebox.com/profile/1019735" aria-label="hackthebox"
         target="_blank" rel="noopener">
-        <i class="fab fa-twitter"></i>
+        <i class="fas fa-cube"></i>
       </a>
       
 
@@ -376,9 +237,9 @@
       
 
       
-      <a href="/feed.xml" aria-label="rss"
-        >
-        <i class="fas fa-rss"></i>
+      <a href="https://www.linkedin.com/in/oscar-blanco-esp/" aria-label="linkedin"
+        target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
       </a>
       
 
@@ -654,9 +515,30 @@
 
 <!-- return -->
 
-<h1 data-toc-skip>EvilShell</h1>
+  
+
+<h1 id="post-title" data-toc-skip>EvilShell</h1>
 
 <div class="post-meta text-muted">
+
+
+
+  <div class="d-flex justify-content-between">
+    <!-- author(s) -->
+    <span>
+      
+
+      Por
+
+      <em>
+      
+        <a href="https://github.com/username">WhiteXnd</a>
+      
+      </em>
+    </span>
+
+    <div>
+
     <!-- published date -->
     <span>
       Publicado
@@ -678,46 +560,6 @@
 
     </span>
 
-    <!-- lastmod date -->
-    
-    <span>
-      Actualizado
-      <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-
-<em class=""
-    data-ts="1670178403"
-    data-df="DD/MM/YYYY"
-    data-toggle="tooltip" data-placement="bottom">
-  04/12/2022
-</em>
-
-    </span>
-    
-
-  
-
-  <div class="d-flex justify-content-between">
-    <!-- author(s) -->
-    <span>
-      
-
-      Por
-
-      <em>
-      
-        <a href="https://twitter.com/username">WhiteXnd</a>
-      
-      </em>
-    </span>
-
-    <div>
       <!-- page views -->
       
 
@@ -741,7 +583,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="102 palabras">
+  title="101 palabras">
   <em>1 min</em> de lectura</span>
 
     </div>
@@ -751,9 +593,7 @@
 </div> <!-- .post-meta -->
 
 <div class="post-content">
-  <h1 id="evilshell">EvilShell</h1>
-
-<blockquote>
+  <blockquote>
   <p>EvilShell its a bash script that simplifies the creation of reverse shells</p>
 </blockquote>
 
@@ -765,16 +605,12 @@
 
 <h2 id="usage"><span class="mr-2">Usage</span><a href="#usage" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<blockquote>
-  <p>By default takes the ip from the iface tun0 and the port 443</p>
-</blockquote>
+<p>By default takes the ip from the iface tun0 and the port 443</p>
 
 <p><code class="language-plaintext highlighter-rouge">You can specify the ip with -i and the port with -p
 also you can select the shell with -s parameter</code></p>
 
-<blockquote>
-  <p>If u want to encode the payload u can use</p>
-</blockquote>
+<p>If you want to encode the payload you can use:</p>
 
 <p><code class="language-plaintext highlighter-rouge">-e &lt;encoder&gt;</code>
 Current encoders are b64 (base64) and url</p>
@@ -801,6 +637,12 @@ Current encoders are b64 (base64) and url</p>
 <div class="post-tail-wrapper text-muted">
 
   <!-- categories -->
+  
+  <div class="post-meta mb-3">
+    <i class="far fa-folder-open fa-fw mr-1"></i>
+    
+      <a href='/categories/personal-scripts/'>Personal Scripts</a>
+  </div>
   
 
   <!-- tags -->
@@ -911,12 +753,12 @@ Current encoders are b64 (base64) and url</p>
         
         
         
-      <li><a href="/posts/Monitors/">Monitors</a></li>
+      <li><a href="/posts/EvilShell/">EvilShell</a></li>
       
         
         
         
-      <li><a href="/posts/EvilShell/">EvilShell</a></li>
+      <li><a href="/posts/Monitors/">Monitors</a></li>
       
     </ul>
   </div> <!-- #access-lastmod -->
@@ -953,8 +795,6 @@ Current encoders are b64 (base64) and url</p>
     
     
     
-      
-    
   
     
     
@@ -968,8 +808,6 @@ Current encoders are b64 (base64) and url</p>
     
     
     
-    
-      
     
   
     
@@ -1015,14 +853,6 @@ Current encoders are b64 (base64) and url</p>
       
 
 
-
-<!-- BS-toc.js will be loaded at medium priority -->
-<script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script>
-
-<div id="toc-wrapper" class="pl-0 pr-4 mb-5">
-  <div class="panel-heading pl-3 pt-2 mb-2">Contenido</div>
-  <nav id="toc" data-toggle="toc"></nav>
-</div>
 
 
     
@@ -1072,6 +902,19 @@ Current encoders are b64 (base64) and url</p>
   
 
   
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
     
 
 
@@ -1096,6 +939,16 @@ Current encoders are b64 (base64) and url</p>
   
     
     
+      
+      
+        
+        
+        
+      
+    
+  
+    
+    
   
 
 
@@ -1104,6 +957,47 @@ Current encoders are b64 (base64) and url</p>
     <h3 class="pt-2 mb-4 ml-1"
       data-toc-skip>Lecturas adicionales</h3>
     <div class="card-deck mb-4">
+    
+      
+      
+      <div class="card">
+        <a href="/posts/OSCP-Cheatsheet/">
+          <div class="card-body">
+            <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class="small"
+    data-ts="1670799600"
+    data-df="DD/MM/YYYY"
+    >
+  12/12/2022
+</em>
+
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>OSCP Cheatsheet</h3>
+            <div class="text-muted small">
+              <p>
+                
+
+
+
+
+
+                Bienvenidos a mi Cheatsheet personal para la certificación de la OSCP
+
+Protocolos
+FTP -&amp;gt; 21
+FTP (File Transfer Protocol) es un protocolo comunmente utilizado para la transferencia de archivos ut...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
     
       
       
@@ -1224,8 +1118,6 @@ Current encoders are b64 (base64) and url</p>
     
     
     
-      
-    
   
     
     
@@ -1239,8 +1131,6 @@ Current encoders are b64 (base64) and url</p>
     
     
     
-    
-      
     
   
     
@@ -1295,7 +1185,7 @@ Current encoders are b64 (base64) and url</p>
       <div class="footer-left">
         <p class="mb-0">
           © 2022
-          <a href="https://twitter.com/username">WhiteXnd</a>.
+          <a href="https://github.com/username">WhiteXnd</a>.
           
           <span data-toggle="tooltip" data-placement="top"
             title="Salvo que se indique explícitamente, las entradas de este blog están licenciadas bajo la Creative Commons Attribution 4.0 International (CC BY 4.0) License por el autor.">Algunos derechos reservados.</span>
