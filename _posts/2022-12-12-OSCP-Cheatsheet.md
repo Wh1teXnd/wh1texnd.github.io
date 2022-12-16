@@ -1208,7 +1208,7 @@ done
 
 ### TOTP empleando NTP
 
-`TOTP` es un algoritmo que permite generar una contraseña de un solo uso que utiliza la hora actual como fuente de singularidad, cambiando así cada varios minutos. [NTP](#NTP)
+`TOTP` es un algoritmo que permite generar una contraseña de un solo uso que utiliza la hora actual como fuente de singularidad, cambiando así cada varios minutos. [NTP](###NTP)
 
 ```python
 #!/usr/bin/python3
