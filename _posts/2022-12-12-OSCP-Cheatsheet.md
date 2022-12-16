@@ -1,6 +1,6 @@
 ---
 image:
-  path: ../../images/oscp.png
+  path: ../../assets/img/OSCP.png
   width: 800
   height: 500
 title: OSCP Cheatsheet
@@ -542,9 +542,9 @@ nmap -p139,445 --script "smb-vuln-* and not(smb-vuln-regsvc-dos)" --script-args 
 
 If :
 
-- MS17-010 - [EternalBlue](#EternalBlue (MS17-010))
-- MS08-067 - [MS08-067](#MS08-067)
-- CVE-2017-7494 - [CVE-2017-7494](#CVE-2017-7494)
+- MS17-010 - [EternalBlue](#)
+- MS08-067 - [MS08-067](#)
+- CVE-2017-7494 - [CVE-2017-7494](#)
 
 #### Manual testing
 
@@ -1200,6 +1200,7 @@ done
 
 > Podemos tambien hacer uso de la utilidad pspy:
 > [https://github.com/DominicBreuker/pspy](https://github.com/DominicBreuker/pspy)
+<<<<<<< HEAD
 
 ---
 
@@ -1224,3 +1225,5 @@ print("EL TOKEN es -> %s" % totp.at(response.tx_time))
 ```
 
 ---
+=======
+>>>>>>> 569c23d348511f33036147febc4ed2645290de7c
