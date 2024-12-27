@@ -101,7 +101,6 @@ GEM
     tzinfo-data (1.2022.6)
       tzinfo (>= 1.0.0)
     unicode-display_width (2.3.0)
-    wdm (0.2.0)
     webrick (1.7.0)
     yell (2.2.2)
 
@@ -115,7 +114,6 @@ DEPENDENCIES
   nokogiri (~> 1.14)
   tzinfo (~> 1.2)
   tzinfo-data
-  wdm (~> 0.2.0)
   webrick (~> 1.7)
 
 BUNDLED WITH
