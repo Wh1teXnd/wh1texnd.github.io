@@ -358,21 +358,21 @@ curl -k -v "http://example.com/index.php?page=php://input" --data "<?php echo sh
 
 #### Command injection
 
-- [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection]()
+- [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection)
 
 
 #### Deserialization
 
-- [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Deserialization]()
+- [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Deserialization](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Insecure%20Deserialization)
 
 #### File upload
 
-- [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Upload%20Insecure%]()
+- [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Upload%20Insecure%](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Upload%20Insecure%)
 
 #### SQL injection
 
-- [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection]()
-- [https://cobalt.io/blog/a-pentesters-guide-to-sql-injection-sqli]()
+- [https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection](https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/SQL%20Injection)
+- [https://cobalt.io/blog/a-pentesters-guide-to-sql-injection-sqli](https://cobalt.io/blog/a-pentesters-guide-to-sql-injection-sqli)
 
 Si sanitizan el nombre de la tabla o de la base de datos podriamos pasarlo a hexadecimal
 ```shell
@@ -497,7 +497,7 @@ snmp-check <IP>
 
 #### Modifying SNMP values
 
-- [http://net-snmp.sourceforge.net/tutorial/tutorial-5/commands/snmpset.html]()
+- [http://net-snmp.sourceforge.net/tutorial/tutorial-5/commands/snmpset.html](http://net-snmp.sourceforge.net/tutorial/tutorial-5/commands/snmpset.html)
 
 
 ---
@@ -1200,7 +1200,6 @@ done
 
 > Podemos tambien hacer uso de la utilidad pspy:
 > [https://github.com/DominicBreuker/pspy](https://github.com/DominicBreuker/pspy)
-<<<<<<< HEAD
 
 ---
 
@@ -1225,5 +1224,3 @@ print("EL TOKEN es -> %s" % totp.at(response.tx_time))
 ```
 
 ---
-=======
->>>>>>> 569c23d348511f33036147febc4ed2645290de7c
