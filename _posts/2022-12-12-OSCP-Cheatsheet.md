@@ -497,7 +497,7 @@ snmp-check <IP>
 
 #### Modifying SNMP values
 
-- [http://net-snmp.sourceforge.net/tutorial/tutorial-5/commands/snmpset.html](http://net-snmp.sourceforge.net/tutorial/tutorial-5/commands/snmpset.html)
+- [https://net-snmp.sourceforge.io/tutorial/tutorial-5/commands/snmpset.html](https://net-snmp.sourceforge.io/tutorial/tutorial-5/commands/snmpset.html)
 
 
 ---
