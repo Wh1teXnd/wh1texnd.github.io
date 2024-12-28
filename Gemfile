@@ -14,3 +14,4 @@ end
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 
 gem 'ffi', '< 1.17'
+gem 'google-protobuf', '< 4.29'
