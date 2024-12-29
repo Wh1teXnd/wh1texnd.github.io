@@ -13,10 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2022-12-12-OSCP-Cheatsheet.md",
+                "file": "_posts/2024-12-29-Entorno.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "2024-12-29-Entorno"
             }
           }
         ]
@@ -39,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
             }
           },
           {
@@ -54,7 +58,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "Search"
             }
           },
           {
@@ -62,7 +68,19 @@
             "type": "leaf",
             "state": {
               "type": "starred",
-              "state": {}
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Plugin no longer active"
+            }
+          },
+          {
+            "id": "1ada27a522ef1393",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
         ]
@@ -85,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2022-12-12-OSCP-Cheatsheet.md",
+                "file": "_posts/2024-12-29-Entorno.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +111,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 2024-12-29-Entorno"
             }
           },
           {
@@ -102,10 +122,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2022-12-12-OSCP-Cheatsheet.md",
+                "file": "_posts/2024-12-29-Entorno.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 2024-12-29-Entorno"
             }
           },
           {
@@ -116,7 +138,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -125,8 +149,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2022-12-12-OSCP-Cheatsheet.md"
-              }
+                "file": "_posts/2024-12-29-Entorno.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 2024-12-29-Entorno"
             }
           }
         ]
@@ -136,9 +162,25 @@
     "width": 300,
     "collapsed": true
   },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
   "active": "8cc1d70340967a3b",
   "lastOpenFiles": [
+    "_site/tags/entorno/index.html",
+    "_site/tags/entorno",
     "_posts/2022-12-12-OSCP-Cheatsheet.md",
+    "_posts/2024-12-29-Entorno.md",
+    "images/Pasted image 20241229234450.png",
+    "back.png",
+    "_site/images/Pasted image 20241229234450.png",
     "_posts/2022-11-22-EvilShell.md",
     "_posts/2022-12-04-Monitors.md",
     "_site/Pasted image 20221204180330.png",

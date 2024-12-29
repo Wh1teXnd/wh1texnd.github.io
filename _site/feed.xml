@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>WhiteXnd</title>
   <subtitle>Blog personal sobre pentesting.</subtitle>
-  <updated>2024-12-28T13:55:23+01:00</updated>
+  <updated>2024-12-29T23:46:35+01:00</updated>
   <author>
     <name>WhiteXnd</name>
     <uri>http://localhost:4000/</uri>
@@ -20,11 +20,55 @@
 
   
   <entry>
+    <title>Creación del Entorno</title>
+    <link href="http://localhost:4000/posts/Entorno/" rel="alternate" type="text/html" title="Creación del Entorno" />
+    <published>2024-12-29T23:27:00+01:00</published>
+  
+    <updated>2024-12-29T23:27:00+01:00</updated>
+  
+    <id>http://localhost:4000/posts/Entorno/</id>
+    <content src="http://localhost:4000/posts/Entorno/" />
+    <author>
+      <name>WhiteXnd</name>
+    </author>
+
+  
+    
+    <category term="Entrono" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Instalaremos: Bspwm, sxhkd, polybar, picom, rofi, kitty, zsh, powerlevel10k
+
+En resumen, primeramente ejecutaremos el siguiente comando:
+
+
+  
+    apt install build-essential git vim xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev libxcb-xtest0-dev libxcb-shape0-dev
+  
+
+
+Posteriormente, aplicaremos una actualización...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
     <title>OSCP Cheatsheet</title>
     <link href="http://localhost:4000/posts/OSCP-Cheatsheet/" rel="alternate" type="text/html" title="OSCP Cheatsheet" />
     <published>2022-12-12T00:00:00+01:00</published>
   
-    <updated>2022-12-17T00:18:28+01:00</updated>
+    <updated>2024-12-28T14:07:20+01:00</updated>
   
     <id>http://localhost:4000/posts/OSCP-Cheatsheet/</id>
     <content src="http://localhost:4000/posts/OSCP-Cheatsheet/" />
